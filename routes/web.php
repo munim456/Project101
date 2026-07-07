@@ -29,7 +29,7 @@ Route::get('/privacy-policy', [PageController::class, 'show'])->name('privacy')-
 Route::get('/terms', [PageController::class, 'show'])->name('terms')->defaults('slug', 'terms');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route(auth()->user()->isAdmin() ? 'admin.dashboard' : 'profile.edit');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -39,3 +39,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';

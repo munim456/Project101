@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             AnnouncementSeeder::class,
             SettingSeeder::class,
             PageSeeder::class,
+            PostSeeder::class,
         ]);
     }
 }

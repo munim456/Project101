@@ -103,5 +103,9 @@
     </a>
 
     @yield('scripts')
+
+    @if($analytics = \App\Models\Setting::get('analytics_snippet'))
+        {!! $analytics !!}
+    @endif
 </body>
 </html>

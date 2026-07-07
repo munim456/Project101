@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactFormReceived;
 use App\Models\ContactMessage;
+use App\Models\Setting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -22,7 +25,11 @@ class ContactController extends Controller
             'message' => ['required', 'string', 'max:5000'],
         ]);
 
-        ContactMessage::create($validated);
+        $contactMessage = ContactMessage::create($validated);
+
+        if ($clinicEmail = Setting::get('clinic_email')) {
+            Mail::to($clinicEmail)->send(new ContactFormReceived($contactMessage));
+        }
 
         return redirect()->route('contact')->with('status', 'Thanks — your message has been sent. We\'ll be in touch soon.');
     }

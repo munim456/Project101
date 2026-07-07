@@ -1,6 +1,7 @@
 @extends('layouts.site')
 
 @section('title', 'Contact Us — ' . config('app.name'))
+@section('meta_description', 'Get in touch with Cringila General Medical Practice — address, phone, opening hours, and a contact form for non-urgent enquiries.')
 
 @section('content')
     <section class="py-20">

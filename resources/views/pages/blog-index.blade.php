@@ -1,6 +1,7 @@
 @extends('layouts.site')
 
 @section('title', 'Blog — ' . config('app.name'))
+@section('meta_description', 'Health articles and clinic news from Cringila General Medical Practice.')
 
 @section('content')
     <section class="py-20">

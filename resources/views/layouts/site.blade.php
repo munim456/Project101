@@ -15,6 +15,23 @@
     @endif
     <meta name="twitter:card" content="summary_large_image">
 
+    <script type="application/ld+json">
+        {
+            "@@context": "https://schema.org",
+            "@@type": "MedicalClinic",
+            "name": "{{ \App\Models\Setting::get('clinic_name') }}",
+            "url": "{{ url('/') }}",
+            "telephone": "{{ \App\Models\Setting::get('clinic_phone') }}",
+            "email": "{{ \App\Models\Setting::get('clinic_email') }}",
+            "address": {
+                "@@type": "PostalAddress",
+                "streetAddress": "{{ \App\Models\Setting::get('clinic_address') }}",
+                "addressRegion": "NSW",
+                "addressCountry": "AU"
+            }
+        }
+    </script>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @yield('head')
 </head>

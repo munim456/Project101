@@ -1,6 +1,7 @@
 @extends('layouts.site')
 
 @section('title', 'Book Appointment — ' . config('app.name'))
+@section('meta_description', 'Book a GP appointment online with Cringila General Medical Practice via HealthEngine, or call to book by phone. Walk-ins welcome.')
 
 @section('content')
     <section class="py-20">

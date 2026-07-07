@@ -1,6 +1,7 @@
 @extends('layouts.site')
 
 @section('title', 'Our Doctors — ' . config('app.name'))
+@section('meta_description', 'Meet the qualified GPs at Cringila General Medical Practice, specialising in mental health, chronic disease, and men\'s and women\'s health.')
 
 @section('content')
     <section class="py-20">

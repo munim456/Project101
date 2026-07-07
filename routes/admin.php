@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AnnouncementController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DoctorController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\TestimonialController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +22,8 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     Route::resource('doctors', DoctorController::class)->except('show');
     Route::resource('posts', PostController::class)->except('show');
     Route::post('posts-upload-attachment', [PostController::class, 'uploadAttachment'])->name('posts.upload-attachment');
+    Route::resource('categories', CategoryController::class)->only(['index', 'store', 'update', 'destroy']);
+    Route::resource('tags', TagController::class)->only(['index', 'store', 'update', 'destroy']);
     Route::resource('announcements', AnnouncementController::class)->except('show');
     Route::resource('testimonials', TestimonialController::class)->except('show');
     Route::resource('pages', PageController::class)->except('show');

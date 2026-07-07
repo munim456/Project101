@@ -2,6 +2,10 @@
 
 @section('title', ($post->meta_title ?: $post->title) . ' — ' . config('app.name'))
 @section('meta_description', $post->meta_description ?? $post->excerpt)
+@section('og_type', 'article')
+@if($post->featured_image)
+    @section('og_image', asset('storage/'.$post->featured_image))
+@endif
 
 @section('content')
     <article class="py-20">

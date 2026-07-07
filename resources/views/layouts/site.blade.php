@@ -6,7 +6,17 @@
     <title>@yield('title', config('app.name') . ' — GP Clinic in Cringila, NSW')</title>
     <meta name="description" content="@yield('meta_description', 'Cringila General Medical Practice — same-day appointments, walk-ins welcome, five days a week.')">
 
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:title" content="@yield('title', config('app.name'))">
+    <meta property="og:description" content="@yield('meta_description', 'Cringila General Medical Practice — same-day appointments, walk-ins welcome, five days a week.')">
+    <meta property="og:url" content="{{ url()->current() }}">
+    @hasSection('og_image')
+        <meta property="og:image" content="@yield('og_image')">
+    @endif
+    <meta name="twitter:card" content="summary_large_image">
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @yield('head')
 </head>
 <body class="font-sans text-ink">
 

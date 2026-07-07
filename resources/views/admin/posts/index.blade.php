@@ -4,9 +4,13 @@
 @section('heading', 'Blog Posts')
 @section('subheading', 'Health articles and clinic news shown on the homepage and blog.')
 @section('actions')
-    <a href="{{ route('admin.posts.create') }}" class="bg-accent hover:bg-accent-dark text-white font-semibold text-sm px-4 py-2.5 rounded-lg">
-        + Write New Post
-    </a>
+    <div class="flex items-center gap-4">
+        <a href="{{ route('admin.categories.index') }}" class="text-sm text-primary font-medium hover:underline">Categories</a>
+        <a href="{{ route('admin.tags.index') }}" class="text-sm text-primary font-medium hover:underline">Tags</a>
+        <a href="{{ route('admin.posts.create') }}" class="bg-accent hover:bg-accent-dark text-white font-semibold text-sm px-4 py-2.5 rounded-lg">
+            + Write New Post
+        </a>
+    </div>
 @endsection
 
 @section('content')

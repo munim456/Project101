@@ -31,7 +31,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validated = $this->validated($request);
-        $validated['slug'] = $validated['slug'] ?: Str::slug($validated['title']);
+        $validated['slug'] = ($validated['slug'] ?? null) ?: Str::slug($validated['title']);
         $validated['user_id'] = $request->user()->id;
 
         if ($request->hasFile('featured_image')) {
@@ -56,7 +56,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $validated = $this->validated($request);
-        $validated['slug'] = $validated['slug'] ?: Str::slug($validated['title']);
+        $validated['slug'] = ($validated['slug'] ?? null) ?: Str::slug($validated['title']);
 
         if ($request->hasFile('featured_image')) {
             ImageUploader::delete($post->featured_image);

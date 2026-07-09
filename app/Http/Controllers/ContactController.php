@@ -7,7 +7,9 @@ use App\Models\ContactMessage;
 use App\Models\Setting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Throwable;
 
 class ContactController extends Controller
 {
@@ -28,7 +30,11 @@ class ContactController extends Controller
         $contactMessage = ContactMessage::create($validated);
 
         if ($clinicEmail = Setting::get('clinic_email')) {
-            Mail::to($clinicEmail)->send(new ContactFormReceived($contactMessage));
+            try {
+                Mail::to($clinicEmail)->send(new ContactFormReceived($contactMessage));
+            } catch (Throwable $e) {
+                Log::error('Failed to send contact form notification email: '.$e->getMessage());
+            }
         }
 
         return redirect()->route('contact')->with('status', 'Thanks — your message has been sent. We\'ll be in touch soon.');

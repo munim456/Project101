@@ -28,10 +28,16 @@
                 </div>
             </div>
             <div data-aos="fade-up" data-aos-delay="150" class="relative">
-                <div class="aspect-[4/3] rounded-3xl bg-gradient-to-br from-primary-100 to-primary-50 border border-primary-100 bg-dot-pattern flex items-center justify-center overflow-hidden">
-                    <x-heroicon-o-heart class="w-20 h-20 text-primary/25" />
+                <div class="absolute -inset-3 sm:-inset-4 bg-primary-100/70 animate-blob"></div>
+                <div class="relative aspect-[4/3] rounded-3xl bg-gradient-to-br from-primary-100 to-primary-50 border border-primary-100 bg-dot-pattern overflow-hidden flex items-center justify-center">
+                    <div class="relative w-28 h-28">
+                        <div class="absolute inset-0 rounded-full bg-white/60 animate-pulse-soft"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <x-heroicon-o-heart class="w-14 h-14 text-primary/50" />
+                        </div>
+                    </div>
                 </div>
-                <div class="absolute -bottom-6 -left-6 hidden sm:flex items-center gap-3 bg-white rounded-2xl shadow-lg border border-primary-100 px-5 py-4">
+                <div class="absolute -bottom-6 -left-6 hidden sm:flex items-center gap-3 bg-white rounded-2xl shadow-lg border border-primary-100 px-5 py-4 animate-float">
                     <div class="w-11 h-11 rounded-full bg-primary-50 text-primary flex items-center justify-center flex-none">
                         <x-heroicon-o-calendar-days class="w-5 h-5" />
                     </div>
@@ -39,6 +45,16 @@
                         <p class="text-sm font-semibold text-primary-900 leading-tight">Same-day appointments</p>
                         <p class="text-xs text-ink-muted">Walk-ins welcome, 5 days a week</p>
                     </div>
+                </div>
+                <div class="absolute -top-5 -right-3 hidden sm:flex items-center gap-2 bg-white rounded-2xl shadow-lg border border-primary-100 px-4 py-3 animate-float-delayed">
+                    <div class="flex text-accent">
+                        <x-heroicon-s-star class="w-3.5 h-3.5" />
+                        <x-heroicon-s-star class="w-3.5 h-3.5" />
+                        <x-heroicon-s-star class="w-3.5 h-3.5" />
+                        <x-heroicon-s-star class="w-3.5 h-3.5" />
+                        <x-heroicon-s-star class="w-3.5 h-3.5" />
+                    </div>
+                    <p class="text-xs font-semibold text-primary-900 whitespace-nowrap">Trusted local care</p>
                 </div>
             </div>
         </div>
@@ -95,8 +111,8 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 @foreach($services as $i => $service)
                     <div data-aos="fade-up" data-aos-delay="{{ $i * 75 }}"
-                         class="rounded-2xl border border-primary-100 p-7 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-14 h-14 rounded-xl bg-primary-50 text-primary flex items-center justify-center mx-auto mb-5">
+                         class="group rounded-2xl border border-primary-100 p-7 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-xl bg-primary-50 text-primary flex items-center justify-center mx-auto mb-5 transition-all duration-300 group-hover:bg-accent group-hover:text-white group-hover:rotate-6">
                             <x-dynamic-component :component="'heroicon-o-'.$service->icon" class="w-7 h-7" />
                         </div>
                         <h3 class="font-semibold text-primary-900 mb-2">{{ $service->title }}</h3>
@@ -131,9 +147,19 @@
                     @endforeach
                 </div>
             </div>
-            <div data-aos="fade-up" data-aos-delay="150" class="order-1 lg:order-2">
-                <div class="aspect-square rounded-3xl bg-gradient-to-br from-primary-50 to-white border border-primary-100 bg-dot-pattern flex items-center justify-center">
+            <div data-aos="fade-up" data-aos-delay="150" class="relative order-1 lg:order-2">
+                <div class="absolute -inset-3 sm:-inset-4 bg-primary-100/70 animate-blob"></div>
+                <div class="relative aspect-square rounded-3xl bg-gradient-to-br from-primary-50 to-white border border-primary-100 bg-dot-pattern flex items-center justify-center overflow-hidden">
                     <x-heroicon-o-building-office-2 class="w-16 h-16 text-primary/20" />
+                </div>
+                <div class="absolute -bottom-5 -right-4 hidden sm:flex items-center gap-3 bg-white rounded-2xl shadow-lg border border-primary-100 px-5 py-4 animate-float">
+                    <div class="w-11 h-11 rounded-full bg-primary-50 text-primary flex items-center justify-center flex-none">
+                        <x-heroicon-o-map-pin class="w-5 h-5" />
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-primary-900 leading-tight">Serving Cringila</p>
+                        <p class="text-xs text-ink-muted">& the Wollongong community</p>
+                    </div>
                 </div>
             </div>
         </div>

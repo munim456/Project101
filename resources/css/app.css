@@ -20,6 +20,38 @@
         background-image: radial-gradient(theme('colors.primary.600' / 18%) 1.5px, transparent 1.5px);
         background-size: 20px 20px;
     }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-float-delayed {
+        animation: float 6s ease-in-out infinite;
+        animation-delay: 1.5s;
+    }
+
+    .animate-pulse-soft {
+        animation: pulse-soft 3s ease-in-out infinite;
+    }
+
+    .animate-blob {
+        animation: blob 12s ease-in-out infinite;
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-soft {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.04); opacity: 0.92; }
+}
+
+@keyframes blob {
+    0%, 100% { border-radius: 42% 58% 65% 35% / 45% 40% 60% 55%; }
+    50% { border-radius: 60% 40% 35% 65% / 55% 65% 35% 45%; }
 }
 
 @media (prefers-reduced-motion: reduce) {

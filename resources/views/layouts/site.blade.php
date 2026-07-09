@@ -41,7 +41,7 @@
         Skip to content
     </a>
 
-    <header data-navbar class="fixed top-0 inset-x-0 z-40 transition-all duration-300 bg-transparent">
+    <header data-navbar x-data="{ mobileNav: false }" class="fixed top-0 inset-x-0 z-40 transition-all duration-300 bg-transparent">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20 transition-all duration-300">
                 <a href="{{ route('home') }}" class="flex items-center gap-2 font-display font-semibold text-lg text-primary-900">
@@ -64,10 +64,28 @@
                     Book Appointment
                 </a>
 
-                <button x-data @click="mobileNav = !mobileNav" class="lg:hidden p-2" aria-label="Toggle menu">
-                    <x-heroicon-o-bars-3 class="w-6 h-6" />
+                <button @click="mobileNav = !mobileNav" :aria-expanded="mobileNav" class="lg:hidden p-3 -mr-3" aria-label="Toggle menu">
+                    <x-heroicon-o-bars-3 class="w-6 h-6" x-show="!mobileNav" />
+                    <x-heroicon-o-x-mark class="w-6 h-6" x-show="mobileNav" x-cloak />
                 </button>
             </div>
+        </div>
+
+        <div x-show="mobileNav" x-cloak @click.outside="mobileNav = false"
+             x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+             class="lg:hidden bg-white border-t border-primary-100 shadow-lg">
+            <nav class="mx-auto max-w-7xl px-4 sm:px-6 py-2 flex flex-col text-base font-medium divide-y divide-primary-50">
+                <a href="{{ route('home') }}" class="py-4 hover:text-primary transition-colors">Home</a>
+                <a href="{{ route('about') }}" class="py-4 hover:text-primary transition-colors">About</a>
+                <a href="{{ route('services.index') }}" class="py-4 hover:text-primary transition-colors">Services</a>
+                <a href="{{ route('doctors') }}" class="py-4 hover:text-primary transition-colors">Doctors</a>
+                <a href="{{ route('blog.index') }}" class="py-4 hover:text-primary transition-colors">Blog</a>
+                <a href="{{ route('contact') }}" class="py-4 hover:text-primary transition-colors">Contact</a>
+                <a href="{{ route('booking') }}" class="py-4 flex items-center gap-2 font-semibold text-accent">
+                    <x-heroicon-o-calendar-days class="w-5 h-5" />
+                    Book Appointment
+                </a>
+            </nav>
         </div>
     </header>
 
@@ -85,12 +103,12 @@
             </div>
             <div>
                 <p class="text-xs font-bold uppercase tracking-wide text-primary-200 mb-3">Quick Links</p>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="{{ route('about') }}" class="hover:text-white">About</a></li>
-                    <li><a href="{{ route('services.index') }}" class="hover:text-white">Services</a></li>
-                    <li><a href="{{ route('doctors') }}" class="hover:text-white">Doctors</a></li>
-                    <li><a href="{{ route('blog.index') }}" class="hover:text-white">Blog</a></li>
-                    <li><a href="{{ route('privacy') }}" class="hover:text-white">Privacy Policy</a></li>
+                <ul class="text-sm -my-2">
+                    <li><a href="{{ route('about') }}" class="inline-block py-2 hover:text-white">About</a></li>
+                    <li><a href="{{ route('services.index') }}" class="inline-block py-2 hover:text-white">Services</a></li>
+                    <li><a href="{{ route('doctors') }}" class="inline-block py-2 hover:text-white">Doctors</a></li>
+                    <li><a href="{{ route('blog.index') }}" class="inline-block py-2 hover:text-white">Blog</a></li>
+                    <li><a href="{{ route('privacy') }}" class="inline-block py-2 hover:text-white">Privacy Policy</a></li>
                 </ul>
             </div>
             <div>

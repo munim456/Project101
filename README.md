@@ -1,5 +1,7 @@
 # Cringila General Medical Practice (CGMP) — Website Redevelopment
 
+Repo: [github.com/munim456/Project101](https://github.com/munim456/Project101)
+
 Laravel 12 rebuild of the CGMP website: public marketing site, blog, and a
 custom admin CMS so the client can edit all content without touching code.
 HealthEngine handles bookings — no custom booking engine.
@@ -16,6 +18,8 @@ HealthEngine handles bookings — no custom booking engine.
 ## Local setup
 
 ```bash
+git clone https://github.com/munim456/Project101.git cgmp
+cd cgmp
 composer install
 npm install
 cp .env.example .env

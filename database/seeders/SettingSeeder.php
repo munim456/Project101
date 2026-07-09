@@ -16,7 +16,7 @@ class SettingSeeder extends Seeder
             'clinic_email' => 'reception@cgmp.com.au',
             'clinic_address' => '1 Military Road, Cringila NSW 2502',
             'opening_hours' => "Monday – Friday: 8:30am – 5:30pm\nSaturday – Sunday: Closed",
-            'healthengine_url' => 'https://healthengine.com.au/facility/cringila-general-medical-practice',
+            'healthengine_url' => '',
             'google_map_embed' => '',
             'analytics_snippet' => '',
             'footer_text' => 'Cringila General Medical Practice — open five days a week, same-day appointments available, walk-ins welcome.',

@@ -37,8 +37,9 @@ php artisan serve
 
 Visit `http://127.0.0.1:8000`. Admin panel at `/admin`.
 
-**Seeded admin login:** `admin@cgmp.test` / `password` — change this before
-launch.
+**Seeded admin login:** set by `ADMIN_EMAIL` / `ADMIN_PASSWORD` in `.env`
+(defaults to `admin@cgmp.test` / `password` if unset — override this in
+every environment, including local).
 
 ## What's seeded
 

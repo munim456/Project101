@@ -13,10 +13,9 @@
                    class="inline-flex items-center gap-2 border-2 border-primary text-primary-900 font-semibold px-6 py-3.5 rounded-xl hover:bg-primary-50 transition-colors">
                     Back to Home
                 </a>
-                <a href="{{ route('booking') }}"
-                   class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm transition-colors">
+                <x-booking-link class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm transition-colors">
                     Book Appointment
-                </a>
+                </x-booking-link>
             </div>
         </div>
     </section>

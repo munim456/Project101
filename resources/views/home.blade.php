@@ -16,11 +16,10 @@
                     {{ $hero['subheading'] ?? '' }}
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="{{ route('booking') }}"
-                       class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm transition-colors">
+                    <x-booking-link class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm transition-colors">
                         <x-heroicon-o-calendar-days class="w-5 h-5" />
                         {{ $hero['primary_button_text'] ?? 'Book Appointment' }}
-                    </a>
+                    </x-booking-link>
                     <a href="{{ route('services.index') }}"
                        class="inline-flex items-center gap-2 border-2 border-primary text-primary-900 font-semibold px-6 py-3.5 rounded-xl hover:bg-primary-50 transition-colors">
                         {{ $hero['secondary_button_text'] ?? 'Our Services' }}
@@ -227,11 +226,10 @@
             <h2 class="text-2xl sm:text-3xl font-semibold text-white mb-6">
                 Ready to see a doctor? Book online with HealthEngine.
             </h2>
-            <a href="{{ route('booking') }}"
-               class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition-colors">
+            <x-booking-link class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition-colors">
                 <x-heroicon-o-calendar-days class="w-5 h-5" />
                 Book Appointment
-            </a>
+            </x-booking-link>
         </div>
     </section>
 

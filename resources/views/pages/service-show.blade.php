@@ -13,11 +13,10 @@
             <div class="prose prose-lg max-w-none text-ink-muted leading-relaxed" data-aos="fade-up">
                 <p>{{ $service->description }}</p>
             </div>
-            <a href="{{ route('booking') }}"
-               class="inline-flex items-center gap-2 mt-10 bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm transition-colors">
+            <x-booking-link class="inline-flex items-center gap-2 mt-10 bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm transition-colors">
                 <x-heroicon-o-calendar-days class="w-5 h-5" />
                 Book Appointment
-            </a>
+            </x-booking-link>
         </div>
     </section>
 @endsection

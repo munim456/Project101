@@ -58,11 +58,10 @@
                     <a href="{{ route('contact') }}" class="hover:text-primary transition-colors">Contact</a>
                 </nav>
 
-                <a href="{{ route('booking') }}"
-                   class="hidden sm:inline-flex items-center gap-1.5 bg-accent hover:bg-accent-dark text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors shadow-sm">
+                <x-booking-link class="hidden sm:inline-flex items-center gap-1.5 bg-accent hover:bg-accent-dark text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors shadow-sm">
                     <x-heroicon-o-calendar-days class="w-4 h-4" />
                     Book Appointment
-                </a>
+                </x-booking-link>
 
                 <button @click="mobileNav = !mobileNav" :aria-expanded="mobileNav" class="lg:hidden p-3 -mr-3" aria-label="Toggle menu">
                     <x-heroicon-o-bars-3 class="w-6 h-6" x-show="!mobileNav" />
@@ -81,10 +80,10 @@
                 <a href="{{ route('doctors') }}" class="py-4 hover:text-primary transition-colors">Doctors</a>
                 <a href="{{ route('blog.index') }}" class="py-4 hover:text-primary transition-colors">Blog</a>
                 <a href="{{ route('contact') }}" class="py-4 hover:text-primary transition-colors">Contact</a>
-                <a href="{{ route('booking') }}" class="py-4 flex items-center gap-2 font-semibold text-accent">
+                <x-booking-link class="py-4 flex items-center gap-2 font-semibold text-accent">
                     <x-heroicon-o-calendar-days class="w-5 h-5" />
                     Book Appointment
-                </a>
+                </x-booking-link>
             </nav>
         </div>
     </header>
@@ -132,10 +131,9 @@
         </div>
     </div>
 
-    <a href="{{ route('booking') }}"
-       class="sm:hidden fixed bottom-4 inset-x-4 z-40 bg-accent text-white text-center font-semibold py-3 rounded-xl shadow-lg">
+    <x-booking-link class="sm:hidden fixed bottom-4 inset-x-4 z-40 bg-accent text-white text-center font-semibold py-3 rounded-xl shadow-lg">
         Book Appointment
-    </a>
+    </x-booking-link>
 
     @yield('scripts')
 

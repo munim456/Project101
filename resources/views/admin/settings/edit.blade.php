@@ -35,9 +35,14 @@
                       class="w-full rounded-lg border-primary-200 focus:border-primary focus:ring-primary text-base">{{ old('opening_hours', $settings['opening_hours']) }}</textarea>
         </x-admin.field>
 
-        <x-admin.field label="HealthEngine booking URL" name="healthengine_url" hint="Get this from the clinic's HealthEngine practice dashboard. Used site-wide for every Book Appointment button.">
+        <x-admin.field label="HealthEngine booking URL" name="healthengine_url" hint="The clinic's HealthEngine profile link. Used site-wide for every Book Appointment button, and as a fallback on the booking page if no embed code is set below.">
             <input type="url" id="healthengine_url" name="healthengine_url" value="{{ old('healthengine_url', $settings['healthengine_url']) }}"
                    class="w-full rounded-lg border-primary-200 focus:border-primary focus:ring-primary text-base">
+        </x-admin.field>
+
+        <x-admin.field label="HealthEngine embed code (optional)" name="healthengine_embed_code" hint="If HealthEngine gives you a widget/script embed instead of (or in addition to) a plain URL, paste it here — it takes priority over the URL on the booking page.">
+            <textarea id="healthengine_embed_code" name="healthengine_embed_code" rows="4"
+                      class="w-full rounded-lg border-primary-200 focus:border-primary focus:ring-primary text-base font-mono text-sm">{{ old('healthengine_embed_code', $settings['healthengine_embed_code']) }}</textarea>
         </x-admin.field>
 
         <x-admin.field label="Google Map embed (optional)" name="google_map_embed" hint="Paste the <iframe> embed code from Google Maps.">

@@ -10,8 +10,8 @@ class SettingController extends Controller
 {
     private const KEYS = [
         'clinic_name', 'clinic_phone', 'clinic_email', 'clinic_address',
-        'opening_hours', 'healthengine_url', 'google_map_embed',
-        'analytics_snippet', 'footer_text',
+        'opening_hours', 'healthengine_url', 'healthengine_embed_code',
+        'google_map_embed', 'analytics_snippet', 'footer_text',
     ];
 
     public function edit()
@@ -32,6 +32,7 @@ class SettingController extends Controller
             'clinic_address' => ['nullable', 'string', 'max:500'],
             'opening_hours' => ['nullable', 'string', 'max:1000'],
             'healthengine_url' => ['nullable', 'url', 'max:1000'],
+            'healthengine_embed_code' => ['nullable', 'string'],
             'google_map_embed' => ['nullable', 'string'],
             'analytics_snippet' => ['nullable', 'string'],
             'footer_text' => ['nullable', 'string', 'max:500'],

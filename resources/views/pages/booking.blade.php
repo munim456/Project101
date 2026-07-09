@@ -12,7 +12,20 @@
                 <p class="text-ink-muted">Bookings are handled securely through HealthEngine.</p>
             </div>
 
-            @if($healthengineUrl)
+            @if($healthengineEmbedCode)
+                <div class="rounded-2xl border border-primary-100 overflow-hidden mb-8 [&_iframe]:w-full [&_iframe]:min-h-[600px]" data-aos="fade-up">
+                    {!! $healthengineEmbedCode !!}
+                </div>
+                @if($healthengineUrl)
+                    <div class="text-center" data-aos="fade-up">
+                        <a href="{{ $healthengineUrl }}" target="_blank" rel="noopener"
+                           class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm transition-colors">
+                            Open Booking in a New Tab
+                            <x-heroicon-o-arrow-top-right-on-square class="w-4 h-4" />
+                        </a>
+                    </div>
+                @endif
+            @elseif($healthengineUrl)
                 <div class="rounded-2xl border border-primary-100 overflow-hidden mb-8" data-aos="fade-up">
                     <div class="aspect-[4/3] sm:aspect-video">
                         <iframe src="{{ $healthengineUrl }}" title="HealthEngine booking widget"

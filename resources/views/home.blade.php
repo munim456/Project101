@@ -28,15 +28,24 @@
                 </div>
             </div>
             <div data-aos="fade-up" data-aos-delay="150" class="relative">
-                <div class="aspect-[4/3] rounded-3xl bg-gradient-to-br from-primary-100 to-primary-50 border border-primary-100 flex items-center justify-center">
-                    <x-heroicon-o-heart class="w-24 h-24 text-primary/30" />
+                <div class="aspect-[4/3] rounded-3xl bg-gradient-to-br from-primary-100 to-primary-50 border border-primary-100 bg-dot-pattern flex items-center justify-center overflow-hidden">
+                    <x-heroicon-o-heart class="w-20 h-20 text-primary/25" />
+                </div>
+                <div class="absolute -bottom-6 -left-6 hidden sm:flex items-center gap-3 bg-white rounded-2xl shadow-lg border border-primary-100 px-5 py-4">
+                    <div class="w-11 h-11 rounded-full bg-primary-50 text-primary flex items-center justify-center flex-none">
+                        <x-heroicon-o-calendar-days class="w-5 h-5" />
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-primary-900 leading-tight">Same-day appointments</p>
+                        <p class="text-xs text-ink-muted">Walk-ins welcome, 5 days a week</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     {{-- 2. BLOG (client priority — directly after hero) --}}
-    <section class="py-20">
+    <section class="py-20 bg-white">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex items-end justify-between mb-10" data-aos="fade-up">
                 <div>
@@ -53,11 +62,11 @@
                     <p>Blog posts will appear here once published from the admin dashboard.</p>
                 </div>
             @else
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="flex flex-wrap gap-6">
                     @foreach($latestPosts as $i => $post)
                         <a href="{{ route('blog.show', $post->slug) }}"
                            data-aos="fade-up" data-aos-delay="{{ $i * 75 }}"
-                           class="group rounded-2xl overflow-hidden bg-white border border-primary-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                           class="group w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] rounded-2xl overflow-hidden bg-white border border-primary-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                             <div class="aspect-video bg-primary-50 overflow-hidden">
                                 @if($post->featured_image)
                                     <img src="{{ asset('storage/'.$post->featured_image) }}" alt="{{ $post->title }}"
@@ -77,7 +86,7 @@
     </section>
 
     {{-- 3. SERVICES HIGHLIGHTS --}}
-    <section class="py-20 bg-white">
+    <section class="py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-14" data-aos="fade-up">
                 <p class="text-accent font-bold text-xs uppercase tracking-wide mb-2">What We Offer</p>
@@ -99,7 +108,7 @@
     </section>
 
     {{-- 4. ABOUT THE PRACTICE --}}
-    <section class="py-20">
+    <section class="py-20 bg-white">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-14 items-center">
             <div data-aos="fade-up" class="order-2 lg:order-1">
                 <p class="text-accent font-bold text-xs uppercase tracking-wide mb-2">About Us</p>
@@ -123,13 +132,15 @@
                 </div>
             </div>
             <div data-aos="fade-up" data-aos-delay="150" class="order-1 lg:order-2">
-                <div class="aspect-square rounded-3xl bg-gradient-to-br from-primary-50 to-white border border-primary-100"></div>
+                <div class="aspect-square rounded-3xl bg-gradient-to-br from-primary-50 to-white border border-primary-100 bg-dot-pattern flex items-center justify-center">
+                    <x-heroicon-o-building-office-2 class="w-16 h-16 text-primary/20" />
+                </div>
             </div>
         </div>
     </section>
 
     {{-- 5. DOCTORS --}}
-    <section class="py-20 bg-white">
+    <section class="py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-14" data-aos="fade-up">
                 <p class="text-accent font-bold text-xs uppercase tracking-wide mb-2">Our Team</p>
@@ -138,9 +149,7 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
                 @foreach($doctors as $i => $doctor)
                     <div data-aos="fade-up" data-aos-delay="{{ $i * 75 }}" class="text-center">
-                        <div class="aspect-square rounded-2xl bg-primary-50 mb-4 flex items-center justify-center">
-                            <x-heroicon-o-user class="w-16 h-16 text-primary/30" />
-                        </div>
+                        <x-doctor-avatar :doctor="$doctor" class="mb-4" />
                         <h3 class="font-semibold text-primary-900">{{ $doctor->name }}</h3>
                         <p class="text-accent text-sm font-medium mb-1">{{ $doctor->role }}</p>
                         <p class="text-xs text-ink-muted">{{ $doctor->qualifications }}</p>

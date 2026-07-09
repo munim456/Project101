@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="max-sm:scroll-pb-24">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,7 +91,7 @@
 
     <div class="pt-20"></div>
 
-    <main id="main-content">
+    <main id="main-content" class="pb-24 sm:pb-0">
         @yield('content')
     </main>
 

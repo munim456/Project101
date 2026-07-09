@@ -13,10 +13,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::updateOrCreate(
-            ['email' => 'admin@cgmp.test'],
+            ['email' => env('ADMIN_EMAIL', 'admin@cgmp.test')],
             [
                 'name' => 'CGMP Admin',
-                'password' => 'password',
+                'password' => env('ADMIN_PASSWORD', 'password'),
                 'role' => 'admin',
                 'email_verified_at' => now(),
             ]

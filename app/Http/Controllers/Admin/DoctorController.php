@@ -67,6 +67,7 @@ class DoctorController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'role' => ['nullable', 'string', 'max:255'],
             'qualifications' => ['nullable', 'string', 'max:255'],
+            'status' => ['nullable', 'string', 'in:Available,On Leave,Not Accepting New Patients'],
             'bio' => ['nullable', 'string'],
             'sort_order' => ['nullable', 'integer'],
             'photo' => ['nullable', 'image', 'max:4096', 'mimes:jpg,jpeg,png,webp'],

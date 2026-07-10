@@ -18,6 +18,7 @@ Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
 Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('services.show');
 Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors');
+Route::get('/doctors/{doctor}', [DoctorController::class, 'show'])->name('doctors.show');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');

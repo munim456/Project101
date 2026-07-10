@@ -10,6 +10,7 @@ class Doctor extends Model
         'name',
         'role',
         'qualifications',
+        'status',
         'photo',
         'bio',
         'sort_order',

@@ -17,7 +17,8 @@
                     <th class="text-left px-5 py-3">Order</th>
                     <th class="text-left px-5 py-3">Name</th>
                     <th class="text-left px-5 py-3">Role</th>
-                    <th class="text-left px-5 py-3">Status</th>
+                    <th class="text-left px-5 py-3">Current Status</th>
+                    <th class="text-left px-5 py-3">Visibility</th>
                     <th class="text-right px-5 py-3">Actions</th>
                 </tr>
             </thead>
@@ -27,6 +28,7 @@
                         <td class="px-5 py-3 text-ink-muted">{{ $doctor->sort_order }}</td>
                         <td class="px-5 py-3 font-medium text-primary-900">{{ $doctor->name }}</td>
                         <td class="px-5 py-3 text-ink-muted">{{ $doctor->role }}</td>
+                        <td class="px-5 py-3 text-ink-muted">{{ $doctor->status }}</td>
                         <td class="px-5 py-3">
                             <span class="text-xs px-2 py-1 rounded-full {{ $doctor->is_active ? 'bg-primary-50 text-primary-900' : 'bg-gray-100 text-gray-500' }}">
                                 {{ $doctor->is_active ? 'Active' : 'Hidden' }}
@@ -38,7 +40,7 @@
                         </td>
                     </tr>
                 @empty
-                    <tr><td colspan="5" class="px-5 py-8 text-center text-ink-muted">No doctors yet.</td></tr>
+                    <tr><td colspan="6" class="px-5 py-8 text-center text-ink-muted">No doctors yet.</td></tr>
                 @endforelse
             </tbody>
         </table>

@@ -15,9 +15,22 @@
                     <div data-aos="fade-up" data-aos-delay="{{ $i * 75 }}" class="text-center">
                         <x-doctor-avatar :doctor="$doctor" class="mb-4" />
                         <h2 class="font-semibold text-primary-900">{{ $doctor->name }}</h2>
-                        <p class="text-accent text-sm font-medium mb-1">{{ $doctor->role }}</p>
-                        <p class="text-xs text-ink-muted mb-3">{{ $doctor->qualifications }}</p>
-                        <p class="text-sm text-ink-muted">{{ $doctor->bio }}</p>
+                        <p class="text-accent text-sm font-medium mb-2">{{ $doctor->role }}</p>
+                        <span @class([
+                            'inline-block text-xs font-medium px-3 py-1 rounded-full mb-4',
+                            'bg-primary-50 text-primary-900' => $doctor->status === 'Available',
+                            'bg-amber-100 text-amber-800' => $doctor->status === 'On Leave',
+                            'bg-gray-100 text-gray-600' => !in_array($doctor->status, ['Available', 'On Leave']),
+                        ])>
+                            {{ $doctor->status }}
+                        </span>
+                        <div>
+                            <a href="{{ route('doctors.show', $doctor) }}"
+                               class="inline-flex items-center gap-1.5 text-primary font-semibold text-sm hover:text-primary-dark">
+                                Get Details
+                                <x-heroicon-o-arrow-right class="w-4 h-4" />
+                            </a>
+                        </div>
                     </div>
                 @endforeach
             </div>

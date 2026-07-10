@@ -25,7 +25,19 @@
                    class="w-full rounded-lg border-primary-200 focus:border-primary focus:ring-primary text-base">
         </x-admin.field>
 
-        <x-admin.field label="Bio" name="bio">
+        <x-admin.field label="Current status" name="status" hint="Shown on the doctor's card on the public Doctors page">
+            @php($statusOptions = ['Available', 'On Leave', 'Not Accepting New Patients'])
+            <select id="status" name="status"
+                    class="w-full rounded-lg border-primary-200 focus:border-primary focus:ring-primary text-base">
+                @foreach($statusOptions as $option)
+                    <option value="{{ $option }}" {{ old('status', $doctor->status ?? 'Available') === $option ? 'selected' : '' }}>
+                        {{ $option }}
+                    </option>
+                @endforeach
+            </select>
+        </x-admin.field>
+
+        <x-admin.field label="Bio" name="bio" hint="Shown on the doctor's detail page">
             <textarea id="bio" name="bio" rows="4"
                       class="w-full rounded-lg border-primary-200 focus:border-primary focus:ring-primary text-base">{{ old('bio', $doctor->bio) }}</textarea>
         </x-admin.field>

@@ -12,9 +12,9 @@ class SettingSeeder extends Seeder
     {
         $settings = [
             'clinic_name' => 'Cringila General Medical Practice',
-            'clinic_phone' => '(02) 4276 1234',
+            'clinic_phone' => '02 4274 1795',
             'clinic_email' => 'reception@cgmp.com.au',
-            'clinic_address' => '1 Military Road, Cringila NSW 2502',
+            'clinic_address' => '23 Lake Avenue, Cringila NSW 2502',
             'opening_hours' => "Monday – Friday: 8:30am – 5:30pm\nSaturday – Sunday: Closed",
             'healthengine_url' => '',
             'healthengine_embed_code' => '',

@@ -9,14 +9,21 @@
             <div class="grid lg:grid-cols-[320px_1fr] rounded-2xl overflow-hidden shadow-lg border border-primary-100" data-aos="fade-up">
 
                 {{-- LEFT: Static Information Panel --}}
-                <div class="bg-primary-900 text-white p-8 flex flex-col">
-                    <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-6">
-                        <x-heroicon-o-calendar-days class="w-6 h-6" />
+                <div class="relative bg-primary-900 text-white p-8 flex flex-col overflow-hidden">
+                    <x-heroicon-o-shield-check class="hidden sm:block w-24 h-24 text-white/5 absolute -bottom-4 -right-4 animate-spin-slow" aria-hidden="true" />
+
+                    <div class="relative w-12 h-12 mb-6">
+                        <div class="absolute inset-0 rounded-xl border border-sage-200/40 animate-pulse-ring"></div>
+                        <div class="absolute inset-0 rounded-xl bg-white/10 flex items-center justify-center">
+                            <x-heroicon-o-calendar-days class="w-6 h-6" />
+                        </div>
                     </div>
 
                     <h1 class="text-2xl font-semibold mb-1">Book appointment</h1>
                     <p class="text-sm text-primary-100 mb-8">{{ \App\Models\Setting::get('clinic_name') }}</p>
                     <p class="text-sm text-primary-100">Bookings are handled securely through HealthEngine — select a date and practitioner in the panel to see live availability.</p>
+
+                    <x-ecg-line class="h-6 mt-6 text-sage-200/40" />
 
                     <div class="mt-auto pt-6 border-t border-white/10 text-sm text-primary-100 space-y-3">
                         <p class="font-semibold text-white">Payment &amp; booking info</p>
@@ -27,6 +34,13 @@
 
                 {{-- RIGHT: HealthEngine Booking Panel --}}
                 <div class="bg-white p-6 sm:p-8">
+                    @if($healthengineEmbedCode || $healthengineUrl)
+                        <div class="flex items-start gap-3 rounded-xl bg-sage-50 border border-sage-200 p-4 mb-6 text-sm text-primary-900">
+                            <x-heroicon-o-arrow-top-right-on-square class="w-5 h-5 shrink-0 text-sage-600 mt-0.5" />
+                            <p>Selecting an appointment time will take you to a new tab with HealthEngine to complete your booking.</p>
+                        </div>
+                    @endif
+
                     @if($healthengineEmbedCode)
                         <div class="rounded-xl border border-primary-100 overflow-hidden [&_iframe]:w-full [&_iframe]:min-h-[600px]">
                             {!! $healthengineEmbedCode !!}
@@ -34,7 +48,7 @@
                         @if($healthengineUrl)
                             <div class="text-center mt-6">
                                 <a href="{{ $healthengineUrl }}" target="_blank" rel="noopener"
-                                   class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm transition-colors">
+                                   class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm transition-all duration-200 hover:scale-105 active:scale-95">
                                     Open Booking in a New Tab
                                     <x-heroicon-o-arrow-top-right-on-square class="w-4 h-4" />
                                 </a>
@@ -49,14 +63,17 @@
                         </div>
                         <div class="text-center mt-6">
                             <a href="{{ $healthengineUrl }}" target="_blank" rel="noopener"
-                               class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm transition-colors">
+                               class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm transition-all duration-200 hover:scale-105 active:scale-95">
                                 Open Booking in a New Tab
                                 <x-heroicon-o-arrow-top-right-on-square class="w-4 h-4" />
                             </a>
                         </div>
                     @else
-                        <div class="h-full rounded-xl border border-dashed border-primary-200 p-10 text-center text-ink-muted flex items-center justify-center">
-                            Online booking will be available here shortly — the HealthEngine link can be set from the admin dashboard.
+                        <div class="h-full rounded-xl border border-dashed border-primary-200 bg-sage-50/40 p-10 text-center flex flex-col items-center justify-center gap-3">
+                            <div class="w-14 h-14 rounded-full bg-sage-100 text-sage-600 flex items-center justify-center">
+                                <x-heroicon-o-clock class="w-7 h-7" />
+                            </div>
+                            <p class="text-ink-muted max-w-xs">Online booking will be available here shortly — the HealthEngine link can be set from the admin dashboard.</p>
                         </div>
                     @endif
                 </div>

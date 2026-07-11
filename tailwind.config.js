@@ -29,6 +29,13 @@ export default {
                     DEFAULT: '#c2452c',
                     dark: '#a8371f',
                 },
+                sage: {
+                    DEFAULT: '#7cb88f',
+                    50: '#f2f8f4',
+                    100: '#e0efe4',
+                    200: '#c3e0cb',
+                    600: '#5a9d70',
+                },
                 surface: {
                     DEFAULT: '#ffffff',
                     muted: '#f7faf9',

@@ -8,7 +8,7 @@
         ->implode('');
 @endphp
 
-<div {{ $attributes->merge(['class' => 'aspect-square rounded-2xl overflow-hidden ' . $class]) }}>
+<div {{ $attributes->merge(['class' => 'aspect-square rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105 ' . $class]) }}>
     @if($doctor->photo)
         <img src="{{ asset('storage/'.$doctor->photo) }}" alt="{{ $doctor->name }}"
              loading="lazy" class="w-full h-full object-cover">

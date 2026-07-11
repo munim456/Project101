@@ -3,4 +3,4 @@
 @endphp
 <a href="{{ $healthengineUrl ?: route('booking') }}"
    @if($healthengineUrl) target="_blank" rel="noopener" @endif
-   {{ $attributes }}>{{ $slot }}</a>
+   {{ $attributes->merge(['class' => 'transition-transform duration-200 hover:scale-105 active:scale-95']) }}>{{ $slot }}</a>

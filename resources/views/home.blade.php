@@ -3,8 +3,11 @@
 @section('content')
 
     {{-- 1. HERO --}}
-    <section class="relative overflow-hidden bg-surface-muted">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28 grid lg:grid-cols-2 gap-12 items-center">
+    <section class="relative overflow-hidden bg-gradient-to-br from-sage-50 via-surface-muted to-primary-50">
+        <x-heroicon-o-beaker class="hidden lg:block w-10 h-10 text-sage-600/25 absolute top-24 left-[8%] animate-float" aria-hidden="true" />
+        <x-heroicon-o-plus-circle class="hidden lg:block w-8 h-8 text-primary/20 absolute bottom-28 left-[20%] animate-float-delayed" aria-hidden="true" />
+        <x-heroicon-o-shield-check class="hidden lg:block w-9 h-9 text-sage-600/20 absolute top-16 right-[6%] animate-float-delayed" aria-hidden="true" />
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28 grid lg:grid-cols-2 gap-12 items-center relative">
             <div data-aos="fade-up">
                 <p class="text-accent font-bold text-sm uppercase tracking-wide mb-4">
                     {{ \App\Models\Setting::get('clinic_name') }}
@@ -30,12 +33,15 @@
                 <div class="absolute -inset-3 sm:-inset-4 bg-primary-100/70 animate-blob"></div>
                 <div class="relative aspect-[4/3] rounded-3xl bg-gradient-to-br from-primary-100 to-primary-50 border border-primary-100 bg-dot-pattern overflow-hidden flex items-center justify-center">
                     <div class="relative w-28 h-28">
+                        <div class="absolute inset-0 rounded-full border-2 border-primary/40 animate-pulse-ring"></div>
+                        <div class="absolute inset-0 rounded-full border-2 border-primary/40 animate-pulse-ring-delayed"></div>
                         <div class="absolute inset-0 rounded-full bg-white/60 animate-pulse-soft"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
                             <x-heroicon-o-heart class="w-14 h-14 text-primary/50" />
                         </div>
                     </div>
                 </div>
+                <x-ecg-line class="h-8 mt-4 text-primary/30" />
                 <div class="absolute -bottom-6 -left-6 hidden sm:flex items-center gap-3 bg-white rounded-2xl shadow-lg border border-primary-100 px-5 py-4 animate-float">
                     <div class="w-11 h-11 rounded-full bg-primary-50 text-primary flex items-center justify-center flex-none">
                         <x-heroicon-o-calendar-days class="w-5 h-5" />
@@ -56,6 +62,11 @@
                     <p class="text-xs font-semibold text-primary-900 whitespace-nowrap">Trusted local care</p>
                 </div>
             </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 leading-none" aria-hidden="true">
+            <svg viewBox="0 0 1440 60" class="w-full h-10 sm:h-14" preserveAspectRatio="none">
+                <path d="M0,32 C240,64 480,0 720,16 C960,32 1200,64 1440,32 L1440,60 L0,60 Z" fill="white" />
+            </svg>
         </div>
     </section>
 
@@ -101,8 +112,9 @@
     </section>
 
     {{-- 3. SERVICES HIGHLIGHTS --}}
-    <section class="py-20">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="py-20 bg-sage-50 relative overflow-hidden">
+        <x-illustration-molecule class="hidden lg:block w-24 h-24 absolute top-8 right-8 animate-spin-slow opacity-70" />
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
             <div class="text-center mb-14" data-aos="fade-up">
                 <p class="text-accent font-bold text-xs uppercase tracking-wide mb-2">What We Offer</p>
                 <h2 class="text-3xl font-semibold text-primary-900">Services built around you</h2>
@@ -110,8 +122,8 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 @foreach($services as $i => $service)
                     <div data-aos="fade-up" data-aos-delay="{{ $i * 75 }}"
-                         class="group rounded-2xl border border-primary-100 p-7 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-14 h-14 rounded-xl bg-primary-50 text-primary flex items-center justify-center mx-auto mb-5 transition-all duration-300 group-hover:bg-accent group-hover:text-white group-hover:rotate-6">
+                         class="group rounded-2xl border border-primary-100 bg-white p-7 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-xl bg-primary-50 text-primary flex items-center justify-center mx-auto mb-5 animate-pulse-soft transition-all duration-300 group-hover:bg-accent group-hover:text-white group-hover:rotate-6 group-hover:scale-110">
                             <x-dynamic-component :component="'heroicon-o-'.$service->icon" class="w-7 h-7" />
                         </div>
                         <h3 class="font-semibold text-primary-900 mb-2">{{ $service->title }}</h3>
@@ -147,9 +159,9 @@
                 </div>
             </div>
             <div data-aos="fade-up" data-aos-delay="150" class="relative order-1 lg:order-2">
-                <div class="absolute -inset-3 sm:-inset-4 bg-primary-100/70 animate-blob"></div>
-                <div class="relative aspect-square rounded-3xl bg-gradient-to-br from-primary-50 to-white border border-primary-100 bg-dot-pattern flex items-center justify-center overflow-hidden">
-                    <x-heroicon-o-building-office-2 class="w-16 h-16 text-primary/20" />
+                <div class="absolute -inset-3 sm:-inset-4 bg-sage-100/70 animate-blob"></div>
+                <div class="relative aspect-square rounded-3xl bg-gradient-to-br from-sage-50 to-white border border-primary-100 bg-dot-pattern flex items-center justify-center overflow-hidden">
+                    <x-illustration-leaf class="w-28 h-28 animate-float" />
                 </div>
                 <div class="absolute -bottom-5 -right-4 hidden sm:flex items-center gap-3 bg-white rounded-2xl shadow-lg border border-primary-100 px-5 py-4 animate-float">
                     <div class="w-11 h-11 rounded-full bg-primary-50 text-primary flex items-center justify-center flex-none">
@@ -165,7 +177,7 @@
     </section>
 
     {{-- 5. DOCTORS --}}
-    <section class="py-20">
+    <section class="py-20 bg-sage-50">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-14" data-aos="fade-up">
                 <p class="text-accent font-bold text-xs uppercase tracking-wide mb-2">Our Team</p>
@@ -174,10 +186,29 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
                 @foreach($doctors as $i => $doctor)
                     <div data-aos="fade-up" data-aos-delay="{{ $i * 75 }}" class="text-center">
-                        <x-doctor-avatar :doctor="$doctor" class="mb-4" />
+                        <x-doctor-avatar :doctor="$doctor" @class([
+                            'mb-4 ring-4',
+                            'ring-sage-200' => $doctor->status === 'Available',
+                            'ring-amber-200' => $doctor->status === 'On Leave',
+                            'ring-gray-200' => !in_array($doctor->status, ['Available', 'On Leave']),
+                        ]) />
                         <h3 class="font-semibold text-primary-900">{{ $doctor->name }}</h3>
                         <p class="text-accent text-sm font-medium mb-1">{{ $doctor->role }}</p>
-                        <p class="text-xs text-ink-muted">{{ $doctor->qualifications }}</p>
+                        <p class="text-xs text-ink-muted mb-2">{{ $doctor->qualifications }}</p>
+                        <span @class([
+                            'inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full',
+                            'bg-white text-primary-900' => $doctor->status === 'Available',
+                            'bg-amber-100 text-amber-800' => $doctor->status === 'On Leave',
+                            'bg-gray-100 text-gray-600' => !in_array($doctor->status, ['Available', 'On Leave']),
+                        ])>
+                            @if($doctor->status === 'Available')
+                                <span class="relative flex w-2 h-2">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/60"></span>
+                                    <span class="relative inline-flex rounded-full w-2 h-2 bg-primary"></span>
+                                </span>
+                            @endif
+                            {{ $doctor->status }}
+                        </span>
                     </div>
                 @endforeach
             </div>
@@ -205,7 +236,8 @@
                 </div>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach($testimonials as $i => $testimonial)
-                        <div data-aos="fade-up" data-aos-delay="{{ $i * 75 }}" class="rounded-2xl border border-primary-100 p-6">
+                        <div data-aos="fade-up" data-aos-delay="{{ $i * 75 }}" class="rounded-2xl border border-primary-100 border-t-4 border-t-sage-600 bg-white p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                            <x-heroicon-s-chat-bubble-left-right class="w-6 h-6 text-sage-600/40 mb-2" />
                             <div class="flex gap-1 text-accent mb-3">
                                 @for($s = 0; $s < $testimonial->rating; $s++)
                                     <x-heroicon-s-star class="w-4 h-4" />
@@ -226,7 +258,7 @@
             <h2 class="text-2xl sm:text-3xl font-semibold text-white mb-6">
                 Ready to see a doctor? Book online with HealthEngine.
             </h2>
-            <x-booking-link class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition-colors">
+            <x-booking-link class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition-colors animate-pulse-glow">
                 <x-heroicon-o-calendar-days class="w-5 h-5" />
                 Book Appointment
             </x-booking-link>

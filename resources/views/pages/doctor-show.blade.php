@@ -19,11 +19,17 @@
                     <p class="text-accent font-medium mb-3">{{ $doctor->role }}</p>
 
                     <span @class([
-                        'inline-block text-xs font-medium px-3 py-1 rounded-full mb-4',
+                        'inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full mb-4',
                         'bg-primary-50 text-primary-900' => $doctor->status === 'Available',
                         'bg-amber-100 text-amber-800' => $doctor->status === 'On Leave',
                         'bg-gray-100 text-gray-600' => !in_array($doctor->status, ['Available', 'On Leave']),
                     ])>
+                        @if($doctor->status === 'Available')
+                            <span class="relative flex w-2 h-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/60"></span>
+                                <span class="relative inline-flex rounded-full w-2 h-2 bg-primary"></span>
+                            </span>
+                        @endif
                         {{ $doctor->status }}
                     </span>
 

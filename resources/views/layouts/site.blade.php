@@ -50,12 +50,12 @@
                 </a>
 
                 <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
-                    <a href="{{ route('home') }}" class="hover:text-primary transition-colors">Home</a>
-                    <a href="{{ route('about') }}" class="hover:text-primary transition-colors">About</a>
-                    <a href="{{ route('services.index') }}" class="hover:text-primary transition-colors">Services</a>
-                    <a href="{{ route('doctors') }}" class="hover:text-primary transition-colors">Doctors</a>
-                    <a href="{{ route('blog.index') }}" class="hover:text-primary transition-colors">Blog</a>
-                    <a href="{{ route('contact') }}" class="hover:text-primary transition-colors">Contact</a>
+                    <a href="{{ route('home') }}" class="relative hover:text-primary transition-colors group">Home<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="{{ route('about') }}" class="relative hover:text-primary transition-colors group">About<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="{{ route('services.index') }}" class="relative hover:text-primary transition-colors group">Services<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="{{ route('doctors') }}" class="relative hover:text-primary transition-colors group">Doctors<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="{{ route('blog.index') }}" class="relative hover:text-primary transition-colors group">Blog<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="{{ route('contact') }}" class="relative hover:text-primary transition-colors group">Contact<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span></a>
                 </nav>
 
                 <x-booking-link class="hidden sm:inline-flex items-center gap-1.5 bg-accent hover:bg-accent-dark text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors shadow-sm">

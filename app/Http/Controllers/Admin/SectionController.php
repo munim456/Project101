@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Section;
+use App\Support\ImageUploader;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
@@ -20,6 +21,8 @@ class SectionController extends Controller
     public function update(Request $request, string $key)
     {
         abort_unless(in_array($key, ['hero', 'about']), 404);
+
+        $section = Section::firstOrCreate(['key' => $key], ['content' => []]);
 
         $content = match ($key) {
             'hero' => $request->validate([
@@ -40,6 +43,20 @@ class SectionController extends Controller
                     ->all(),
             ],
         };
+
+        if ($key === 'hero') {
+            $request->validate(['image' => ['nullable', 'image', 'max:4096', 'mimes:jpg,jpeg,png,webp']]);
+
+            if ($request->boolean('remove_image')) {
+                ImageUploader::delete($section->content['image'] ?? null);
+                $content['image'] = null;
+            } elseif ($request->hasFile('image')) {
+                ImageUploader::delete($section->content['image'] ?? null);
+                $content['image'] = ImageUploader::store($request->file('image'), 'sections');
+            } else {
+                $content['image'] = $section->content['image'] ?? null;
+            }
+        }
 
         Section::updateOrCreate(['key' => $key], ['content' => $content]);
 

@@ -32,14 +32,19 @@
             <div data-aos="fade-up" data-aos-delay="150" class="relative">
                 <div class="absolute -inset-3 sm:-inset-4 bg-primary-100/70 animate-blob"></div>
                 <div class="relative aspect-[4/3] rounded-3xl bg-gradient-to-br from-primary-100 to-primary-50 border border-primary-100 bg-dot-pattern overflow-hidden flex items-center justify-center">
-                    <div class="relative w-28 h-28">
-                        <div class="absolute inset-0 rounded-full border-2 border-primary/40 animate-pulse-ring"></div>
-                        <div class="absolute inset-0 rounded-full border-2 border-primary/40 animate-pulse-ring-delayed"></div>
-                        <div class="absolute inset-0 rounded-full bg-white/60 animate-pulse-soft"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <x-heroicon-o-heart class="w-14 h-14 text-primary/50" />
+                    @if($hero['image'] ?? null)
+                        <img src="{{ asset('storage/'.$hero['image']) }}" alt="{{ \App\Models\Setting::get('clinic_name') }}"
+                             class="absolute inset-0 w-full h-full object-cover">
+                    @else
+                        <div class="relative w-28 h-28">
+                            <div class="absolute inset-0 rounded-full border-2 border-primary/40 animate-pulse-ring"></div>
+                            <div class="absolute inset-0 rounded-full border-2 border-primary/40 animate-pulse-ring-delayed"></div>
+                            <div class="absolute inset-0 rounded-full bg-white/60 animate-pulse-soft"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <x-heroicon-o-heart class="w-14 h-14 text-primary/50" />
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
                 <x-ecg-line class="h-8 mt-4 text-primary/30" />
                 <div class="absolute -bottom-6 -left-6 hidden sm:flex items-center gap-3 bg-white rounded-2xl shadow-lg border border-primary-100 px-5 py-4 animate-float">

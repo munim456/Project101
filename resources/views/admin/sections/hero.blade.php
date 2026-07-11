@@ -5,10 +5,23 @@
 @section('subheading', 'The first thing visitors see on the homepage.')
 
 @section('content')
-    <form method="POST" action="{{ route('admin.sections.update', 'hero') }}"
+    <form method="POST" action="{{ route('admin.sections.update', 'hero') }}" enctype="multipart/form-data"
           class="max-w-2xl space-y-6 bg-white border border-primary-100 rounded-2xl p-8">
         @csrf
         @method('PUT')
+
+        <x-admin.field label="Hero photo" name="image" hint="Replaces the illustrated icon panel with a real photo. JPG/PNG/WebP, max 4MB.">
+            @if($section->content['image'] ?? null)
+                <div class="mb-3 flex items-center gap-4">
+                    <img src="{{ asset('storage/'.$section->content['image']) }}" alt="Current hero photo" class="w-32 h-24 rounded-lg object-cover border border-primary-100">
+                    <label class="flex items-center gap-2 text-sm text-ink-muted">
+                        <input type="checkbox" name="remove_image" value="1" class="rounded border-primary-300 text-primary focus:ring-primary">
+                        Remove photo (revert to illustration)
+                    </label>
+                </div>
+            @endif
+            <input type="file" id="image" name="image" accept="image/png,image/jpeg,image/webp" class="w-full text-sm">
+        </x-admin.field>
 
         <x-admin.field label="Heading" name="heading">
             <input type="text" id="heading" name="heading" value="{{ old('heading', $section->content['heading'] ?? '') }}" required

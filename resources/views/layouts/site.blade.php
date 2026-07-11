@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
-    <link rel="icon" href="{{ asset('favicon-32.png') }}" type="image/png" sizes="32x32">
-    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="icon" href="{{ asset('favicon-32-v2.png') }}" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon-v2.png') }}">
     <title>@yield('title', config('app.name') . ' — GP Clinic in Cringila, NSW')</title>
     <meta name="description" content="@yield('meta_description', 'Cringila General Medical Practice — same-day appointments, walk-ins welcome, five days a week.')">
 

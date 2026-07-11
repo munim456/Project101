@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
+    <link rel="icon" href="{{ asset('favicon-32.png') }}" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
     <title>@yield('title', config('app.name') . ' — GP Clinic in Cringila, NSW')</title>
     <meta name="description" content="@yield('meta_description', 'Cringila General Medical Practice — same-day appointments, walk-ins welcome, five days a week.')">
 
@@ -45,7 +48,7 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20 transition-all duration-300">
                 <a href="{{ route('home') }}" class="flex items-center gap-2 font-display font-semibold text-lg text-primary-900">
-                    <x-heroicon-o-plus-circle class="w-7 h-7 text-primary" />
+                    <x-logo-mark class="w-8 h-8 text-base" />
                     {{ \App\Models\Setting::get('clinic_name', config('app.name')) }}
                 </a>
 
